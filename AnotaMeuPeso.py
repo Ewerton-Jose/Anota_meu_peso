@@ -15,8 +15,8 @@ def Análise_float(x = str):
                 print('\033[31mImpossível, ninguém pesa menos que zero\033[m')
             elif y == 0:
                 print('\033[31mImpossível, ninguém pesa exatamente 0\033[m')
-            elif y > 600:
-                print('\033[31mImpossível, a pessoa mais pesada do mundo tem 600KL\033[m')
+            elif y > 727:
+                print('\033[31mImpossível, a pessoa mais pesada do mundo tem 727KL\033[m')
             else:
                 return y
                 break
@@ -32,7 +32,33 @@ def Análise_nome(x = 'Digite seu nome: '):
             return nome
             break
 
+def IMC(Peso = float, Altura = float):
+    x = []
+    imc = Peso / (Altura * Altura)
+    Classificação_de_peso = ''
+    
+    if imc <= 18.5:
+        Classificação_de_peso = 'Abaixo do peso'
+    elif imc >= 18.6 and imc <= 24.9:
+        Classificação_de_peso = 'Normal'
+    elif imc >= 24.9 and imc <= 29:
+        Classificação_de_peso = 'Sobre Peso'
+    elif imc >= 30 and imc <= 34.9:
+        Classificação_de_peso = 'Obesidade Primeiro Grau'
+    elif imc >= 35 and imc <= 39.9:
+        Classificação_de_peso = 'Obesidade Segundo Grau'
+    elif imc >= 40:
+        Classificação_de_peso = 'Obesidade mobirda'
+    
+    x.append(imc)
+    x.append(Classificação_de_peso)
+    return x
+
 data_Primeiro_Peso = f'{datetime.date.today()}'.split('-')
-nome = Análise_nome('Digite seu nome: ')
+# nome = Análise_nome('Digite seu nome: ')
 primeiro_Peso = Análise_float('Quanto você está pesando hoje: ')
-print(f'\033[32mNa data de {Mostra_Data(data_Primeiro_Peso)} você está pesando {primeiro_Peso} \nParabens!! para seu 1º dia até que você tá bem, continue assim {nome}\033[m')
+Altura_atual = Análise_float('Sua altura: ')
+lista = [IMC(primeiro_Peso, Altura_atual)]
+print(lista)
+
+# print(f'\033[32mNa data de {Mostra_Data(data_Primeiro_Peso)} você está pesando {primeiro_Peso} \nParabens!! para seu 1º dia até que você tá bem, continue assim {nome}\033[m')
